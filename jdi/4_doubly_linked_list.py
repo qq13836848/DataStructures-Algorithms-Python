@@ -1,3 +1,6 @@
+from hashlib import new
+from os import sep
+from re import M
 
 
 class Node:
@@ -35,6 +38,7 @@ class DoubleLinkedList:
     def pop(self):
         if self.length == 0:
             return None
+
         temp = self.tail
         if self.length == 1:
             self.head = None
@@ -75,7 +79,7 @@ class DoubleLinkedList:
     def get(self, index):
         if index < 0 or index >= self.length:
             return None
-        if index < self.length/2:
+        if index < self.length / 2:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
@@ -122,8 +126,8 @@ class DoubleLinkedList:
 
         temp = self.get(index)
 
-        temp.next.prev = temp.prev
-        temp.prev.next = temp.next
+        temp.next.prev = self.prev
+        temp.prev.next = self.next
         temp.next = None
         temp.prev = None
 
@@ -131,123 +135,42 @@ class DoubleLinkedList:
         return temp
 
 
-'''
-
-# test LinkedList.method(), wait O_O, it's DoubleLinkedList
-
 print('# create a DoubleLinkedList')
 my_doubly_linked_list = DoubleLinkedList(1)
-print('# test append(2), append(3), append(4)')
+print('# test append')
 my_doubly_linked_list.append(2)
 my_doubly_linked_list.append(3)
 my_doubly_linked_list.append(4)
 my_doubly_linked_list.print_list()
 print()
-print()
-print()
-print()
-
-
-
-
 
 print('# test pop()')
-print('# to remove the last Node, do not care else')
 my_doubly_linked_list.pop()
-
-print('# to print the linkedlist right now')
 my_doubly_linked_list.print_list()
-
-print("\n# to remove the last Node, print it's object")
-print(my_doubly_linked_list.pop())
-
-print("\n# to remove the last Node, and get it's value")
 print(my_doubly_linked_list.pop().value)
-
-print('\n# to print the linkedlist right now')
-my_doubly_linked_list.print_list()
-print()
-print()
-print()
 print()
 
-
-
-
-
-print('# test prepend()')
+print('# test prepend')
 my_doubly_linked_list.prepend(2)
 my_doubly_linked_list.prepend(3)
 my_doubly_linked_list.prepend(4)
-print('# to print the linkedlist right now')
 my_doubly_linked_list.print_list()
 print()
-print()
-print()
-print()
-
-
-
-
 
 print('# test pop_first()')
-print('# to remove the first Node, do not care else')
-my_doubly_linked_list.pop_first()
-print('# to print the linkedlist right now')
+print(my_doubly_linked_list.pop_first().value)
 my_doubly_linked_list.print_list()
-print()
-print()
-print()
-print()
-
-
-
 
 print('# test get(1)')
 print(my_doubly_linked_list.get(1).value)
 print()
-print()
-print()
-print()
 
-
-
-
-print('# test set_value(0, 23)')
-my_doubly_linked_list.set_value(1, 23)
-print('# to print the linkedlist right now')
+print('# test set_value(0, 23')
+my_doubly_linked_list.set_value(0, 23)
 my_doubly_linked_list.print_list()
 print()
-print()
-print()
-print()
 
-
-
-
-print('# test insert(2, 76)')
+print('# test insert(2, 76')
 my_doubly_linked_list.insert(2, 76)
-print('# to print the linkedlist right now')
 my_doubly_linked_list.print_list()
 print()
-print()
-print()
-print()
-
-
-
-
-
-
-
-print('# test remove()')
-my_doubly_linked_list.remove(0)
-print('# to print the linkedlist right now')
-my_doubly_linked_list.print_list()
-print()
-print()
-print()
-print()
-
-
-'''
